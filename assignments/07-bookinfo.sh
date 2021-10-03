@@ -29,7 +29,7 @@ cd reviews
 docker build -t reviews .
 
 # for run docker container reviews with environment var and link to raings service
-docker run -d --name reviews -p 8082:8082 --link ratings:ratings -e 'RATINGS_SERVICE=http://ratings:8080/' -e ENABLE_RATINGS=true reviews
+docker run -d --name reviews -p 8082:9080 --link ratings:ratings -e 'RATINGS_SERVICE=http://ratings:8080/' -e ENABLE_RATINGS=true reviews
 
 # return and open productpage directory
 cd ..
