@@ -1,8 +1,6 @@
-# Custom [for ratings]
+# Custom [for dev-ratings]
 
-kubectl create secret generic bookinfo-dev-ratings-mongodb-secret \
-  --from-literal=mongodb-password=CHANGEME \
-  --from-literal=mongodb-root-password=CHANGEME
+kubectl create secret generic bookinfo-dev-ratings-mongodb-secret  --from-literal=mongodb-password=CHANGEME  --from-literal=mongodb-root-password=CHANGEME
 
 mkdir k8s/helm-values/
 
@@ -19,9 +17,6 @@ persistence:
   enabled: false
 initdbScriptsConfigMap: bookinfo-dev-ratings-mongodb-initdb' > k8s/helm-values/values-bookinfo-dev-ratings-mongodb.yaml
 
-kubectl create configmap bookinfo-dev-ratings-mongodb-initdb \
-  --from-file=databases/ratings_data.json \
-  --from-file=databases/script.sh
+kubectl create configmap bookinfo-dev-ratings-mongodb-initdb  --from-file=databases/ratings_data.json  --from-file=databases/script.sh
 
-helm install -f k8s/helm-values/values-bookinfo-dev-ratings-mongodb.yaml \
-  bookinfo-dev-ratings-mongodb bitnami/mongodb --version 10.28.4
+helm install -f k8s/helm-values/values-bookinfo-dev-ratings-mongodb.yaml  bookinfo-dev-ratings-mongodb bitnami/mongodb --version 10.28.4
